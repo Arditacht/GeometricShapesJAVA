@@ -1,0 +1,163 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GeometricObjects;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+
+/**
+ *
+ * @author durba
+ */
+public class DrawRectangle extends javax.swing.JPanel {
+
+    /**
+     * Creates new form Draw
+     */
+    double width;
+    double height;
+    Color color;
+    boolean filled;
+    
+    /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *<pre>
+     *     Constructor     Draw()-default constructor
+     *     Description     Create an instance of the Draw class.
+     *     @author         <i>Ardit Miftaraj</i>
+     *     Date            02/20/2020
+     *</pre>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/ 
+    public DrawRectangle() {
+        setPreferredSize( new Dimension(400, 400) );
+        setBackground( Color.WHITE );
+    }
+ /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *<pre>
+     *     Method       setColor()
+     *     Description  Set method that sets the color to be used
+     *     @author      <i>Ardit Miftaraj</i>
+     *     Date         02/20/2020
+     *</pre>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    public void setColor(Color color) {
+        this.color = color;
+    }
+/**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *<pre>
+     *     Method       setFilled()
+     *     Description  Set method that decides if the field is filled or not 
+     *     @author      <i>Ardit Miftaraj</i>
+     *     Date         02/20/2020
+     *</pre>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    public void setFilled(boolean filled) {
+        this.filled = filled;
+    }
+   /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *<pre>
+     *     Method       setWidth()
+     *     Description  Set method that sets the radius of the circle
+     *     @author      <i>Ardit Miftaraj</i>
+     *     Date         02/20/2020
+     *</pre>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/ 
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+    
+    
+    /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *<pre>
+     *     Method       paintComponent()
+     *     Description  method that draw the shape of circle
+     *     @author      <i>Ardit Miftaraj</i>
+     *     Date         02/20/2020
+     *</pre>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    
+    @Override
+    public void paintComponent ( Graphics gr )
+  { 
+      super.paintComponent(gr);
+        Graphics2D g = (Graphics2D) gr;
+        gr.setColor( color );
+        
+      if(width> getWidth()/1.5 || height>getHeight()/1.5)
+      { 
+        while(width> getWidth()/1.5|| height>getHeight()/1.5)
+        {
+           width /= 1.5;
+           height /= 1.5;
+        }
+      
+        gr.drawLine(getWidth()/2,0,getWidth()/2,getHeight());
+        gr.drawLine(0,getHeight()/2,getWidth(),getHeight()/2);
+        double x = getWidth()/2;
+        double y = getHeight()/2;
+        g.draw(new Rectangle2D.Double(x -width/2, y -height/2, width , height ));
+        if (filled) {
+          g.fill(new Rectangle2D.Double(x -width/2, y -height/2, width , height ));
+      }
+       }
+      else if(width < getWidth()/4 || height<getHeight()/4)
+      { 
+        while(width < getWidth()/4|| height<getHeight()/4 )
+        {
+           width *= 1.5;
+           height *= 1.5;
+        }
+      
+        gr.drawLine(getWidth()/2,0,getWidth()/2,getHeight());
+        gr.drawLine(0,getHeight()/2,getWidth(),getHeight()/2);
+        double x = getWidth()/2;
+        double y = getHeight()/2;
+        g.draw(new Rectangle2D.Double(x -width/2, y -height/2, width , height ));
+        if (filled) {
+          g.fill(new Rectangle2D.Double(x -width/2, y -height/2, width , height ));
+      }
+       }
+      else
+      {
+        gr.drawLine(getWidth()/2,0,getWidth()/2,getHeight());
+        gr.drawLine(0,getHeight()/2,getWidth(),getHeight()/2);
+        double x = getWidth()/2;
+        double y = getHeight()/2;
+        g.draw(new Rectangle2D.Double(x -width/2, y -height/2, width , height ));
+        if (filled) {
+          g.fill(new Rectangle2D.Double(x -width/2, y -height/2, width , height ));
+                    }  
+      }
+      
+  }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
+}
